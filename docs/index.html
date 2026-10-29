@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PG Manager — live demo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside>
+    <h1>PG Manager</h1>
+    <nav id="nav">
+        <a href="#/" data-route="/">Dashboard</a>
+        <a href="#/rooms" data-route="/rooms">Rooms</a>
+        <a href="#/tenants" data-route="/tenants">Tenants</a>
+        <a href="#/payments" data-route="/payments">Payments</a>
+        <a href="#/rules" data-route="/rules">House rules</a>
+        <a href="#/export" data-route="/export">Export tenants (XML)</a>
+    </nav>
+</aside>
+<main>
+    <div id="flash"></div>
+    <div id="view"></div>
+    <p class="muted" style="margin-top:28px">
+        Browser demo of the Laravel app in this repo — the same screens, data model and XML
+        rules/export, running on <code>localStorage</code> instead of PHP + SQLite.
+    </p>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

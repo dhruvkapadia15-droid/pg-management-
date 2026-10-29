@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pg name="Sunrise PG">
+    <rule>Rent is due on or before the 5th of every month.</rule>
+    <rule>Gate closes at 10:30 PM. Inform the warden for late entry.</rule>
+    <rule>Visitors are allowed in the common area from 9 AM to 8 PM only.</rule>
+    <rule>One month notice is required before vacating. Deposit is refunded after room check.</rule>
+    <rule>Keep rooms and shared kitchens clean. No smoking or alcohol inside.</rule>
+</pg>

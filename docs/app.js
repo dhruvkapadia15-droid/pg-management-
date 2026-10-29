@@ -72,7 +72,7 @@ function load() {
     const raw = localStorage.getItem(KEY);
     if (raw) return JSON.parse(raw);
   } catch (e) { /* fall through to seed */ }
-  const seeded = structuredClone(SEED);
+  const seeded = JSON.parse(JSON.stringify(SEED));
   localStorage.setItem(KEY, JSON.stringify(seeded));
   return seeded;
 }
@@ -154,9 +154,13 @@ function listView(type) {
 
   const inputs = names.map(name => {
     const kind = cfg.fields[name];
-    const options = typeof kind === 'function' ? kind() : Array.isArray(kind) ? kind : null;
+    // 'text'/'number'/'date' => <input>; an array of choices => value and label are the same;
+    // a function => { value: label } pairs (rooms, tenants), exactly like the Blade form.
+    const options = typeof kind === 'function' ? Object.entries(kind())
+      : Array.isArray(kind) ? kind.map(v => [v, v])
+      : null;
     const control = options
-      ? `<select name="${name}" required><option value="">Select</option>${Object.entries(options)
+      ? `<select name="${name}" required><option value="">Select</option>${options
           .map(([k, v]) => `<option value="${esc(k)}">${esc(v)}</option>`).join('')}</select>`
       : `<input type="${kind}" name="${name}" required>`;
     return `<label>${esc(label(name))}${control}</label>`;
